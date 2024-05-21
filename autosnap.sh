@@ -47,11 +47,11 @@ do
 	#86400 seconds = 1 day
 	#604800 seconds = 1 week
 	#2592000 seconds = 1 month
-	if [ $DATE_DIFF -gt 86400 ]
-	then
-		echo "$WORKING will be deleted"
-		logger "Autosnap EXAMPLE - Deleting /tank/media@autosnap-$WORKING"
-	fi
+	#if [ $DATE_DIFF -gt 86400 ]
+	#then
+	#	echo "$WORKING will be deleted"
+	#	logger "Autosnap - Deleting /tank/media@autosnap-$WORKING"
+	#fi
 done
 
 
@@ -61,13 +61,13 @@ RESULT=$?
 if [ $RESULT -gt 0 ]
 then
 	echo "Error occurred: $ANS"
-	logger "AUTOSNAP EXAMPLE - Snapshot creation failed:$ANS"
+	logger "AUTOSNAP - Snapshot creation failed:$ANS"
 	exit
 else
 	echo "Autosnap created"
-	logger "Autosnap EXAMPLE - new snapshot created $DATE - $ANS"
+	logger "AUTOSNAP - New Snapshot Created $DATE - $ANS"
 fi
 
-echo "After";
-
-/sbin/zfs list -t snapshot -o name -s creation -H;
+#Debug - show snapshots list afterwards
+#echo "After";
+#/sbin/zfs list -t snapshot -o name -s creation -H;
